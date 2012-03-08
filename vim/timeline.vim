@@ -13,12 +13,10 @@ fu! TimelineEntry()
 		exe "normal! o\<CR>\<ESC>"
 	endif
 	let the_time = ''
-	if exists('strftime')
+	if has("win32") "Specifically for windows, that doesn't have strftime()
+		let the_time = <SID>Trim(system('date /t')) . ' ' . <SID>Trim(system('time /t'))
+	else
 		let the_time = strftime('%Y/%m/%d %T')
-	else "No strftime() function to call
-		if has("win32") "Specifically for windows
-			let the_time = <SID>Trim(system('date /t')) . ' ' . <SID>Trim(system('time /t'))
-		endif
 	endif
 
 	exec "normal! a[" . the_time	. "]\<cr>\<cr>\<esc>"
