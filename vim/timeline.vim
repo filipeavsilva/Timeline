@@ -19,5 +19,5 @@ fu! TimelineEntry()
 		let the_time = strftime('%Y/%m/%d %T')
 	endif
 
-	exec "normal! a[" . the_time	. "]\<cr>\<cr>\<esc>"
+	exec "normal! a[" . the_time	. "]\<cr>"
 endfunction
